@@ -1,0 +1,20 @@
+---
+MY_NODES_ONLY: True
+CONTACT_REFRESH_INTERVAL: 120
+GATE_TO_MQTT: True
+MQTT_SERVER: "XXX.XXX.XXX.XXX"
+MQTT_PORT: "1883"
+MQTT_USER: "username"
+MQTT_PASS: "password" 
+MQTT_BASE_TOPIC: "MeshCore"
+GET_REPETAER_STATS: False
+REPEATER_CHECK_INTERVAL: 3600
+REPEATERS:
+  - "Repeater 1 Public Key"
+  - "Repeater 2 Public Key"
+REPEATER_PASSWORDS:
+  - "Repeater 1 password"
+  - "Repeater 2 password"
+MY_NODES:
+  - "My Node 1 Public Key"
+  - "My Node 2 Public Key"
