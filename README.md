@@ -1,5 +1,5 @@
 # MeshCoreBot
-A bot for MeshCore that responds to commands, can retrieve repeater telemetry and gates everything to MQTT.
+A bot for MeshCore that responds to commands, notably ping
 
 This is still very much a work in progress. For now, the applicaiton only works with a USB companion. Bluetooth support coming soon.
 
