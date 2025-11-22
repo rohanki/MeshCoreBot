@@ -1,5 +1,6 @@
 # MeshCoreBot
-A bot for MeshCore that responds to commands, notably ping
+A bot for MeshCore that responds to commands, notably ping.
+Can also gate incoming text messages (Private and Channel) to MQTT if enabled.,
 
 This is still very much a work in progress. For now, the applicaiton only works with a USB companion. Bluetooth support coming soon.
 
