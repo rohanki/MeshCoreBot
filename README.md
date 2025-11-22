@@ -11,5 +11,5 @@ Installation:
 4. Edit conf.yaml
 5. Connect device and start. python MeshCoreBot.py --port yourportgoeshere
 
-Thanks to meshcore-dev for the python library: https://github.com/meshcore-dev/meshcore_py
-Inspiration from 868meshbot for Meshtastic: https://github.com/868meshbot/meshbot
+Thanks to meshcore-dev for the python library: https://github.com/meshcore-dev/meshcore_py and chrisdavis2110 for the python implementation of MeshCore packet decoder: https://github.com/chrisdavis2110/meshcore-decoder-py
+
