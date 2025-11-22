@@ -247,11 +247,35 @@ async def main():
 
 
 
+    async def handle_advert(event):
+        logger.debug('📖 Advert Received')
+        thisAdverter = meshcore.get_contact_by_key_prefix(event.payload['public_key'])
+        if str(thisAdverter) == 'None':
+            #confirm a path has been received
+            if 'out_path_len' in event:
+                logger.info('📖Advert Received from: ' + str(event.payload['public_key']) + ' via ' + str(event['out_path_len']) + ' hops.')
+            else:
+                logger.info('📖Advert Received from: ' + str(event.payload['public_key']) + ' via an unknown path')
+        else:
+            if 'out_path_len' in thisAdverter:
+                logger.info('📖Advert Received from: ' + str(thisAdverter['adv_name']) + ' via ' + str(thisAdverter['out_path_len']) + ' hops.')
+            else:
+                logger.info('📖Advert Received from: ' + str(thisAdverter['adv_name']) + ' via an unknown path')
+        #Gate to MQTT (if enabled)
+        if GATE_TO_MQTT:
+            #add lookup and add contact details to payload
+            try:
+                event.payload.update(meshcore.get_contact_by_key_prefix(event.payload['public_key']))
+            finally:
+                payload = json.dumps(event.payload)
+                publish.single(MQTT_BASE_TOPIC + "advert", payload, hostname=MQTT_SERVER, port=MQTT_PORT,auth={'username': MQTT_USER, 'password': MQTT_PASS})
+
     
     
     # Subscribe to events
     meshcore.subscribe(EventType.CONTACT_MSG_RECV, handle_messages)
     meshcore.subscribe(EventType.CHANNEL_MSG_RECV, handle_messages)
+    meshcore.subscribe(EventType.ADVERTISEMENT, handle_advert)
     meshcore.subscribe(EventType.RX_LOG_DATA,handle_log_data)
 
 
